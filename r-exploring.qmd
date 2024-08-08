@@ -1,0 +1,49 @@
+---
+title: "r-exploringq"
+format: html
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+```{r}
+# load libraries ----
+library(GGally)
+library(skimr)
+library(palmerpenguins)
+library(tidyverse)
+
+# Always look at it ----
+# View(penguins)
+
+# Check the column names ----
+names(penguins) 
+
+dim(penguins)
+
+summary(penguins)
+
+# Get a summary with {skimr} ----
+skimr::skim(penguins)
+
+head(penguins)
+
+tail(penguins)
+
+#pairs plot function ----
+
+GGally::ggpairs(penguins)
+
+# Make a pairsplot with a select number of columns and color by species ----
+GGally::ggpairs(penguins, columns = 3:6, ggplot2::aes(colour = species))
+
+# attempt histogram of penguin flipper lengths ----
+
+geom_histogram(penguins, aes(x = flipper_length, y = species, color = species))
+
+# x = flipper length
+
+# Make a histogram of penguin flipper lengths ----
+ggplot(data = penguins, aes(x = flipper_length_mm, color = species)) +
+  geom_histogram()
+```
+
